@@ -1,0 +1,16 @@
+.grid-container {
+    display: grid;
+    grid-template:
+        " header header header header "
+        " . main main right "
+        " . main main right "
+        " . main main right "
+        " . sidebar sidebar . ";
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-gap: .1em;
+    border: 2px black solid;
+}
+
+.grid-container>div {
+    font-size: 1em;
+}

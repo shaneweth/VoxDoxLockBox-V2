@@ -1,12 +1,13 @@
 import React from 'react';
 import "./Record.css";
 
-class Record extends React.Component {
+class TapeDeck extends React.Component {
   render() {
   return (
+
 
   )
 }
 }
 
-  export default Record;
+  export default TapeDeck;

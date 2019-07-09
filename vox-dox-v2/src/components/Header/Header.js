@@ -12,8 +12,10 @@ class Header extends React.Component {
             src={"/assets/logo.svg"}
             alt={"VOXDOXLogo"}
         /> 
+      <div className="content">
         <Form />
         <Present /> 
+      </div>
     </div>
     </div>
   )

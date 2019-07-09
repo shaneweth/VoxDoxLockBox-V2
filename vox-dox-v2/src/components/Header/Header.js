@@ -6,6 +6,7 @@ import Present from '../Present';
 class Header extends React.Component {
   render() {
   return (
+    <div className="header">
     <div className="logoWrapper">
        <img 
             src={"/assets/logo.svg"}
@@ -13,6 +14,7 @@ class Header extends React.Component {
         /> 
         <Form />
         <Present /> 
+    </div>
     </div>
   )
 }

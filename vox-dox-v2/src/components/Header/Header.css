@@ -1,5 +1,4 @@
-header {
-    /* border: solid 3px red; */
+.header {
     height: 10vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;

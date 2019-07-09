@@ -16,7 +16,7 @@ body {
 
 /* add grid container - divs */
 
-header {
+.header {
   grid-area: header;
 }
 

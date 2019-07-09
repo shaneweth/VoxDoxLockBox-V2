@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
-import ReactDOM from 'react-dom';
+import TapeDeck from './components/TapeDeck/TapeDeck';
 import './App.css';
 
 class App extends React.Component {
@@ -8,6 +8,7 @@ class App extends React.Component {
   return (
     <div className="grid-container">
       <Header />
+      <TapeDeck />
     </div>
   )
 }

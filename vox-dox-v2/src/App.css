@@ -24,7 +24,7 @@ header {
   grid-area: sidebar;
 }
 
-main {
+.tapeDeck {
   grid-area: main;
 }
 

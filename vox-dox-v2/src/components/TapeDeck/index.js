@@ -1,1 +1,1 @@
-export {default} from "./Record";
+export {default} from "./TapeDeck";

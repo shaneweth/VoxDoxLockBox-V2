@@ -29,7 +29,7 @@ class Form extends React.Component {
       <div className="row" id="fileUpload">
         <br />
         <input type="file" name="myFile" className="fileInput" />
-        <input className="submitBtn" type="submit" value="send" />
+        <button className="submitBtn" type="submit" value="send">send</button>
       </div>
     </form>
   </div>

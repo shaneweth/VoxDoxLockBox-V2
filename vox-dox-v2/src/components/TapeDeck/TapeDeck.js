@@ -1,7 +1,12 @@
 import React from 'react';
 import "./TapeDeck.css";
 
+
 class TapeDeck extends React.Component {
+    handleEvent() {
+        
+    }
+
     render() {
         return (
             <div className="tapeDeck">
@@ -24,12 +29,14 @@ class TapeDeck extends React.Component {
                     </div>
                 </div>
                 </div>
-                <button class="togglePlayer"><i class="fas fa-clipboard-list">
+                <button onClick={this.handleEvent} className="togglePlayer"><i className="fas fa-clipboard-list">
                   </i></button>
             </div>
 
         )
     }
+
 }
                   
+    
   export default TapeDeck;

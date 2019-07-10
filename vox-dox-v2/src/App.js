@@ -8,7 +8,7 @@ class App extends React.Component {
   return (
     <div className="grid-container">
       <Header />
-      <TapeDeck />
+      {/* <TapeDeck /> */}
     </div>
   )
 }

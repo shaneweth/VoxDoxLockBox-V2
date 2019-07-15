@@ -1,7 +1,6 @@
 // dotenv.config();
 // aws.config.update({
-//     accessKeyId: "AKIATXD362LLGCFKOXXK",
-//     secretAccessKey: "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"
+
 // });
 
 require("express-fileupload");
@@ -13,8 +12,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 aws.config.update({
-    accessKeyId: "AKIATXD362LLGCFKOXXK",
-    secretAccessKey: "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"
+
 });
 
 

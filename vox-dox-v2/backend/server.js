@@ -31,7 +31,7 @@ var storage = multer.diskStorage({
 // amazon s3 config
 dotenv.config();
 aws.config.update({
- 
+   
 });
 
 // multer
@@ -61,7 +61,7 @@ projRoutes.route('/add').post(function (req, res) {
     upload(req, res, function (err) {
 
         //    req.file is the file itself
-        console.log(req.files.file.data);
+        // console.log(req.files.file.data);
         // get file
         let file = req.files.file.data;
         // get file name

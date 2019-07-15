@@ -16,12 +16,38 @@ class Form extends React.Component {
     this.state = {
       proj_title: '',
       proj_description: '',
-      proj_url: ''
+      proj_url: '',
+      selectedFile: null
     }
   }
+// ---------------my functions--------------
+  // get file
+  onChangeHandler = event => {
+    // console.log(event.target.files[0]);
+    this.setState({
+      selectedFile: event.target.files[0],
+      loaded: 0,
+    })
+
+  }
+  // upload
+  onClickHandler = () => {
+    const data = new FormData()
+    data.append('file', this.state.selectedFile)
+    console.log("file: " + data);
+    axios.post("http://localhost:2112/projs/add", data, {
+      // receive two    parameter endpoint url ,form data
+    })
+      .then(res => { // then print response status
+        console.log(res.statusText)
+      })
+  }
+// -----------------------------------------------
+
 
   // methods
 
+  // -------------
   onChangeProjTitle(e) {
     this.setState({
       proj_title: e.target.value
@@ -55,13 +81,13 @@ class Form extends React.Component {
     };
 
     axios.post('http://localhost:2112/projs/add', newProj)
-        .then(res => console.log(res.data));
+      .then(res => console.log(res.data));
 
-        this.setState({
-          proj_title: '',
-          proj_description: '',
-          proj_url: '',
-        })
+    this.setState({
+      proj_title: '',
+      proj_description: '',
+      proj_url: '',
+    })
   }
 
   render() {
@@ -76,28 +102,28 @@ class Form extends React.Component {
             <label>
               <h3>title</h3>
             </label>
-            <input    type="text" 
-                      name="title"
-                      value={this.state.proj_title}
-                      onChange={this.onChangeProjTitle} 
-                      />
+            <input type="text"
+              name="title"
+              value={this.state.proj_title}
+              onChange={this.onChangeProjTitle}
+            />
           </div>
           <div className="row">
             <label>
               <h3>description</h3>
             </label>
-            <input    type="text" 
-                      name="description" 
-                      value={this.state.proj_description}
-                      onChange={this.onChangeProjDescription} 
-                      />
+            <input type="text"
+              name="description"
+              value={this.state.proj_description}
+              onChange={this.onChangeProjDescription}
+            />
 
           </div>
           <hr />
           <div className="row" id="fileUpload">
             <br />
-            <input type="file" name="myFile" className="fileInput" />
-            <button className="submitBtn" type="submit" value="Create Project">Create</button>
+            <input type="file" name="myFile" className="fileInput" onChange={this.onChangeHandler} />
+            <button className="submitBtn" type="submit" value="Create Project" onClick={this.onClickHandler}>Create</button>
           </div>
         </form>
       </div>

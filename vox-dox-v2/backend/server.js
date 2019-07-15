@@ -39,6 +39,13 @@ projRoutes.route('/add').post(function(req, res) {
         })
 })
 
+projRoutes.route('/edit/:id').get(function(req, res) {
+    let id = req.params.id;
+    Proj.findById(id, function(err, response) {
+        res.json(response);
+    })
+})
+
 app.use('/projs', projRoutes);
 
 app.listen(PORT, function() {

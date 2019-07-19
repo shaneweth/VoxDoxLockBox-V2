@@ -9,13 +9,10 @@ const aws = require('aws-sdk');
 const dotenv = require('dotenv');
 
 
-
 dotenv.config();
 aws.config.update({
 
 });
-
-
 
 module.exports = function (app) {
     app.get("/api/projects", function (req, res) {
@@ -57,8 +54,6 @@ module.exports = function (app) {
 
         });
     });
-
-
 
     app.post("/api/projects", function (req, res) {
         const s3 = new aws.S3();

@@ -31,7 +31,8 @@ var storage = multer.diskStorage({
 // amazon s3 config
 dotenv.config();
 aws.config.update({
-   
+    accessKeyId: "AKIATXD362LLCPJJCT67",
+    secretAccessKey: "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"
 });
 
 // multer
@@ -46,7 +47,7 @@ connection.once('open', function () {
 })
 
 projRoutes.route('/').get(function (req, res) {
-    Proj.find(function (err, projs) {
+    Proj.find((err, projs) => {
         if (err) {
             console.log(err);
         } else {
@@ -56,17 +57,28 @@ projRoutes.route('/').get(function (req, res) {
 });
 
 projRoutes.route('/add').post(function (req, res) {
-    // amazon s3
+
+    let proj = new Proj(req.body);
+    proj.save()
+        .then(proj => {
+            res.status(200).json({ 'project': 'added successfully' });
+        })
+        .catch(err => {
+            res.status(400).send('adding new failed');
+        })
+
+    // // amazon s3
     const s3 = new aws.S3();
     upload(req, res, function (err) {
 
         //    req.file is the file itself
         // console.log(req.files.file.data);
+        // console.log(req.files.file.name);
         // get file
         let file = req.files.file.data;
         // get file name
         let fName = req.files.file.name;
-
+ 
         // bucket parameters
         let params = {
             Bucket: 'voxdox',
@@ -83,26 +95,17 @@ projRoutes.route('/add').post(function (req, res) {
                 console.log("Upload Success", data.Location);
             }
         });
+        // mongoDB
     })
 
-
-    // mongoDB
-    let proj = new Proj(req.body);
-    proj.save()
-        .then(proj => {
-            res.status(200).json({ 'project': 'added successfully' });
-        })
-        .catch(err => {
-            res.status(400).send('adding new failed');
-        })
 })
 
-projRoutes.route('/edit/:id').get(function (req, res) {
-    let id = req.params.id;
-    Proj.findById(id, function (err, response) {
-        res.json(response);
-    })
-})
+// projRoutes.route('/edit/:id').get(function (req, res) {
+//     let id = req.params.id;
+//     Proj.findById(id, function (err, response) {
+//         res.json(response);
+//     })
+// })
 
 app.use('/projs', projRoutes);
 

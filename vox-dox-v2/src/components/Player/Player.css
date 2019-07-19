@@ -1,0 +1,67 @@
+.player {
+    background: rgba(0, 0, 0, 0.774);
+    border-radius: .5rem;
+    width: 100%;
+    height: 5rem;
+    color: whitesmoke;
+    position: relative;
+}
+
+.controls {
+    display: flex;
+    position: relative;
+    padding: 2px;
+    bottom: 0;
+    width: 100%;
+    flex-wrap: wrap;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.controls >* {
+    flex: 1;
+}
+
+.controls > a {
+    text-decoration: none;
+    height: 3rem;
+    width: 3rem;
+    box-sizing: border-box;
+    padding: 1em 1em;
+    float: left;
+    color: whitesmoke;
+}
+
+.controls > a:hover {
+    background-color: rgba(224, 175, 128, 0.938);
+    cursor: pointer;
+}
+
+.progress {
+    flex: 10;
+    position: relative;
+    margin: 1px;
+    display: flex;
+    flex-basis: 100%;
+    height: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.progress > .bar {
+    /* position: absolute; */
+    top: .7em;
+    /* right: 5px;  */
+    width: 100%;
+    border-radius: .2rem;
+    bottom: .7em;
+    background: black;
+}
+
+.progress > .bar > div {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background: white;
+}

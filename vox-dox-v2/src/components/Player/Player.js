@@ -9,12 +9,13 @@ class Player extends Component {
     this.state = {
       file: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
       is_playing: false,
-      progress: 0.2,
+      progress: 0.1,
       in_set_progress_mode: false,
-      is_progress_dirty: false
+      
     };
 
     this.is_progress_dirty = false;
+    this.registered_events = false;
   }
 
   togglePlay() {
@@ -64,6 +65,18 @@ class Player extends Component {
         player.currentTime = player.duration * this.state.progress;
       }
 
+      if (!this.registered_events !== player) {
+        this.registered_events = player;
+
+        player.addEventListener('progress', (e) => {
+          console.log(this.is_progress_dirty);
+          if (!this.is_progress_dirty) {
+            this.setState({
+              progress: player.currentTime / player.duration
+            });
+          }
+        })
+      }
     }
 
     var playerClassName = {

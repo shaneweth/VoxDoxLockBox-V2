@@ -9,14 +9,25 @@ class Player extends Component {
     this.state = {
       file: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
       is_playing: false,
-      progress: 0.1,
+      progress: 0,
       in_set_progress_mode: false,
       
     };
 
     this.is_progress_dirty = false;
-    this.registered_events = false;
+    this.interval_id = setInterval(this.onUpdate.bind(this), 250);
   }
+
+  onUpdate() {
+    let player = this.refs.player;
+    if (player && !this.is_progress_dirty) {
+      this.setState({
+        progress: player.currentTime / player.duration
+      });
+    }
+  }
+
+  
 
   togglePlay() {
     this.setState({ is_playing: !this.state.is_playing });
@@ -47,6 +58,9 @@ class Player extends Component {
   }
 
   render() {
+    let currentTime = 0;
+    let totalTime = 0;
+
     if (this.refs.player) {
       const player = this.refs.player;
 
@@ -65,18 +79,9 @@ class Player extends Component {
         player.currentTime = player.duration * this.state.progress;
       }
 
-      if (!this.registered_events !== player) {
-        this.registered_events = player;
 
-        player.addEventListener('progress', (e) => {
-          console.log(this.is_progress_dirty);
-          if (!this.is_progress_dirty) {
-            this.setState({
-              progress: player.currentTime / player.duration
-            });
-          }
-        })
-      }
+      currentTime = player.currentTime;
+      totalTime = player.duration;
     }
 
     var playerClassName = {
@@ -109,13 +114,39 @@ class Player extends Component {
             <div style={{ width: (this.state.progress * 100) + '%' }}></div>
           </div>
         </div>
+        <div className="time">
+          {formatTime(currentTime)} ** of ** {formatTime(totalTime)}
+        </div>
         <audio ref="player">
           <source src={this.state.file} autoPlay="true" />
         </audio>
       </div>
-
     );
   }
+}
+
+function formatTimeToNumber(num) {
+  let str = num + '';
+  if (str.length == 1) {
+    return '0' + str;
+  }
+  if (str.length == 0) {
+    return '00';
+  }
+  return str;
+}
+
+function formatTime(s) {
+  let total_seconds = Math.floor(s);
+  let hours = Math.floor(total_seconds / 3600);
+  let minutes = Math.floor(total_seconds / 60) - hours * 60;
+  let seconds = total_seconds - minutes * 60 - hours * 3600;
+
+  if (hours) {
+    return hours + ':' + formatTimeToNumber(minutes) + ':' + formatTimeToNumber(seconds);
+  }
+
+  return formatTimeToNumber(minutes) + ':' + formatTimeToNumber(seconds);
 }
 
 function offsetLeft(el) {

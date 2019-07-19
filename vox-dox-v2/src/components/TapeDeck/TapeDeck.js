@@ -5,16 +5,31 @@ import "./TapeDeck.css";
 
 
 class TapeDeck extends Component {
+    constructor(props) {
+        super(props);
+        this.togglePlayer = this.togglePlayer.bind(this);
+        this.state = {
+            active: false,
+        };
+    }
+
+    togglePlayer() {
+        const currentState = this.state.active;
+        this.setState({ active: !currentState });
+    };
 
     render() {
         return (
-            <div className="tapeDeck">
+            <div 
+                className={this.state.active ? 'mainDown' : 'tapeDeck'} >
+                <button onClick={this.togglePlayer} className="togglePlayer"><i className="fas fa-clipboard-list">
+                </i></button>
                 <div className="container">
                     <div className="leftCircle"></div>
                     <div className="rightCircle"></div>
-                <div className="transport">
-                    <Player />
-                    {/* <div className="player">
+                    <div className="transport">
+                        <Player />
+                        {/* <div className="player">
                         <audio className="player_video viewer" id="player" src="testing" type="audio/mpeg" ref={(el) => this.audio = el }></audio>
                         <div className="player_controls">
                             <div className="progress">
@@ -26,14 +41,11 @@ class TapeDeck extends Component {
                                     <button data-skip="-10" className="player_button">« 10s</button>
                                     <button data-skip="25" className="player_button">25s »</button>
                         </div>
-                    </div> */}
+        </div> */}
+                    </div>
                 </div>
-                </div>
-                <button onClick={this.handleEvent} className="togglePlayer"><i className="fas fa-clipboard-list">
-                  </i></button>
             </div>
-
         )
     }
-}  
-  export default TapeDeck;
+}
+export default TapeDeck;

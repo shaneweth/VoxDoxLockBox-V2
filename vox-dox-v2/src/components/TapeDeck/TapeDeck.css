@@ -29,8 +29,12 @@
 }
 
 .mainDown {
-    /* height: 100%;
-    width: 100%; */
+    grid-area: main;
+    height: 72vh;
+    width: 62vw;
+    margin: 1vh 2vw 0 2vw;
+    border: rgba(0, 0, 0, 0.685) .5em solid;
+    border-radius: 1rem;
     background-image: url("./assets/steel.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -93,11 +97,11 @@
 }
 
 .leftCircleRotate {
-    -webkit-animation: rotating 2s linear infinite;
-    -moz-animation: rotating 2s linear infinite;
-    -ms-animation: rotating 2s linear infinite;
-    -o-animation: rotating 2s linear infinite;
-    animation: rotating 2s linear infinite;
+    -webkit-animation: rotating 1.5s linear infinite;
+    -moz-animation: rotating 1.5s linear infinite;
+    -ms-animation: rotating 1.5s linear infinite;
+    -o-animation: rotating 1.5s linear infinite;
+    animation: rotating 1.5s linear infinite;
 }
 
 

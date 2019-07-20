@@ -31,6 +31,7 @@ class Player extends Component {
 
   togglePlay() {
     this.setState({ is_playing: !this.state.is_playing });
+    this.props.toggleRotate();
   }
 
   startSetProgress(e) {
@@ -97,8 +98,7 @@ class Player extends Component {
           <a onClick={this.togglePlay.bind(this)}>
             <i className={classnames(playerClassName)} aria-hidden="true"></i>
           </a>
-          <h2> {formatTime(totalTime)}
-          </h2>
+          <h2>{formatTime(totalTime)}</h2>
 
         </div>
         <div

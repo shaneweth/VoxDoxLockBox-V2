@@ -8,7 +8,9 @@ class Header extends React.Component {
   return (
     <div className="header">
     <div className="logoWrapper">
-      <img src={"./assets/logo.svg"} />
+      <div>
+        <h1>VOX DOX</h1>
+      </div>
       <div className="content">
         <Form />
         <Present /> 

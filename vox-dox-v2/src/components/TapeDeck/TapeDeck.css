@@ -17,7 +17,7 @@
 .tapeDeck {
     height: 72vh;
     width: 62vw;
-    margin: 1vh 2vw 0 2vw;
+    margin: 3vh 2vw 0 2vw;
     z-index: 1;
     border: rgba(0, 0, 0, 0.685) .5em solid;
     border-radius: 1rem;

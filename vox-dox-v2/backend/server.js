@@ -31,8 +31,8 @@ var storage = multer.diskStorage({
 // amazon s3 config
 dotenv.config();
 aws.config.update({
-    accessKeyId: "AKIATXD362LLCPJJCT67",
-    secretAccessKey: "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"
+    accessKeyId: "AKIATXD362LLOJSDEGE6",
+    secretAccessKey: "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"
 });
 
 // multer

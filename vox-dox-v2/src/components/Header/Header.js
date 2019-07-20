@@ -2,16 +2,15 @@ import React from 'react';
 import Form from '../Form';
 import "./Header.css";
 import Present from '../Present';
+import Navbar from '../navbar';
 
 class Header extends React.Component {
   render() {
   return (
     <div className="header">
+        <Navbar />
     <div className="logoWrapper">
-       <img 
-            src={"/assets/logo.svg"}
-            alt={"VOXDOXLogo"}
-        /> 
+      <image src={"./assets/logo.svg"} />
       <div className="content">
         <Form />
         <Present /> 

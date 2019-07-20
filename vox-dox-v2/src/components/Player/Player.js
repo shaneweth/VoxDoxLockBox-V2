@@ -31,6 +31,7 @@ class Player extends Component {
 
   togglePlay() {
     this.setState({ is_playing: !this.state.is_playing });
+    this.props.toggleRotate();
   }
 
   startSetProgress(e) {
@@ -93,15 +94,12 @@ class Player extends Component {
     return (
       <div className="player">
         <div className="controls">
-          <a href="javascript:void();">
-            <i className="fas fa-chevron-left"></i>
-          </a>
+          <h2>{formatTime(currentTime)}</h2>
           <a onClick={this.togglePlay.bind(this)}>
             <i className={classnames(playerClassName)} aria-hidden="true"></i>
           </a>
-          <a href="javascript:void();">
-            <i className="fas fa-chevron-right"></i>
-          </a>
+          <h2>{formatTime(totalTime)}</h2>
+
         </div>
         <div
           onMouseDown={this.startSetProgress.bind(this)}
@@ -114,11 +112,9 @@ class Player extends Component {
             <div style={{ width: (this.state.progress * 100) + '%' }}></div>
           </div>
         </div>
-        <div className="time">
-          {formatTime(currentTime)} ** of ** {formatTime(totalTime)}
-        </div>
+
         <audio ref="player">
-          <source src={this.state.file} autoPlay="true" />
+          <source src={this.state.file} autoPlay={true} />
         </audio>
       </div>
     );

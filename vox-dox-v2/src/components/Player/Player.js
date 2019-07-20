@@ -93,19 +93,13 @@ class Player extends Component {
     return (
       <div className="player">
         <div className="controls">
-          <a href="javascript:void();">
-            <i className="fas fa-chevron-left"></i>
-          </a>
+          <h2>{formatTime(currentTime)}</h2>
           <a onClick={this.togglePlay.bind(this)}>
             <i className={classnames(playerClassName)} aria-hidden="true"></i>
           </a>
-          <a href="javascript:void();">
-            <i className="fas fa-chevron-right"></i>
-          </a>
-          <input type="range" name="volume" className="player_slider" min="0" max="1" step="0.05" value="1" />
-          <input type="range" name="playbackRate" className="player_slider" min="0.5" max="2" step="0.1" value="1" />
-          <button data-skip="-10" className="player_button">« 10s</button>
-          <button data-skip="25" className="player_button">25s »</button>
+          <h2> {formatTime(totalTime)}
+          </h2>
+
         </div>
         <div
           onMouseDown={this.startSetProgress.bind(this)}
@@ -118,9 +112,7 @@ class Player extends Component {
             <div style={{ width: (this.state.progress * 100) + '%' }}></div>
           </div>
         </div>
-        <div className="time">
-          {formatTime(currentTime)} ** of ** {formatTime(totalTime)}
-        </div>
+
         <audio ref="player">
           <source src={this.state.file} autoPlay={true} />
         </audio>

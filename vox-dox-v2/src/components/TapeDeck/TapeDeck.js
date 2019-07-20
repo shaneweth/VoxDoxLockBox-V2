@@ -22,8 +22,7 @@ class TapeDeck extends Component {
         return (
             <div 
                 className={this.state.active ? 'mainDown' : 'tapeDeck'} >
-                <button onClick={this.togglePlayer} className="togglePlayer"><i className="fas fa-clipboard-list">
-                </i></button>
+                <button onClick={this.togglePlayer} className="togglePlayer"><i></i></button>
                 <div className="container">
                     <div className="leftCircle"></div>
                     <div className="rightCircle"></div>

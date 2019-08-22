@@ -38,13 +38,13 @@ class Present extends React.Component {
   render() {
     return (
       <div className="projView">
-        <h3>Projects</h3>
+        <h4>Projects</h4>
         <table>
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Notes</th>
-              <th>Link</th>
+              <th><h3>Title</h3></th>
+              <th><h3>Notes</h3></th>
+              <th><h3>Link</h3></th>
             </tr>
           </thead>
           <tbody>
